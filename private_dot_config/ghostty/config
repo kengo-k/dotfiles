@@ -3,7 +3,7 @@
 
 # ===== フォント =====
 font-family = HackGenConsoleNF-Regular
-font-size = 16
+font-size = 14
 font-thicken = true
 font-feature = calt
 
