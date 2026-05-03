@@ -1,0 +1,34 @@
+# ===== フォント =====
+font-family = HackGenConsoleNF-Regular
+font-size = 16
+font-thicken = true
+font-feature = calt
+
+# ===== テーマ =====
+theme = catppuccin-mocha
+
+# ===== ウィンドウ =====
+window-padding-x = 16
+window-padding-y = 12
+# cmuxは独自のタブUIを持つので、Ghostty側のタブバーは無効化する
+window-show-tab-bar = never
+
+# ===== スプリットペイン =====
+# 非フォーカスペインを暗くして、アクティブなペインを視認しやすくする
+unfocused-split-opacity = 0.65
+split-divider-color = 45475a
+
+# ===== キーバインド: ペイン分割 =====
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+
+# ===== キーバインド: ペイン移動（Cmd+Option+矢印） =====
+keybind = super+alt+left=goto_split:left
+keybind = super+alt+right=goto_split:right
+keybind = super+alt+up=goto_split:top
+keybind = super+alt+down=goto_split:bottom
+
+# ===== その他 =====
+macos-option-as-alt = true
+scrollback-limit = 50000
+shell-integration = zsh

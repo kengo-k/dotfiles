@@ -1,0 +1,42 @@
+# ===========================
+# mise
+# ===========================
+eval "$($HOME/.local/bin/mise activate zsh)"
+
+# ===========================
+# zoxide
+# ===========================
+eval "$(zoxide init zsh)"
+
+# ===========================
+# starship
+# ===========================
+eval "$(starship init zsh)"
+
+# ===========================
+# ghq + fzf (Ctrl+G)
+# ===========================
+function ghq-fzf() {
+  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N ghq-fzf
+bindkey '^G' ghq-fzf
+
+# ===========================
+# 履歴検索 fzf (Ctrl+H)
+# ===========================
+function fzf-history() {
+  local selected=$(fc -l 1 | tail -r | fzf +s --query="$LBUFFER" | sed 's/ *[0-9]* *//')
+  if [ -n "$selected" ]; then
+    BUFFER="$selected"
+    CURSOR=$#BUFFER
+  fi
+  zle redisplay
+}
+zle -N fzf-history
+bindkey '^H' fzf-history

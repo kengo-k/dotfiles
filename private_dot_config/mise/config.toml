@@ -1,0 +1,11 @@
+[tools]
+chezmoi = "latest"
+"github:BurntSushi/ripgrep" = "latest"
+"github:ajeetdsouza/zoxide" = "latest"
+"github:cli/cli" = "latest"
+"github:jqlang/jq" = "latest"
+"github:junegunn/fzf" = "latest"
+"github:sharkdp/fd" = "latest"
+"github:starship/starship" = "latest"
+"github:x-motemen/ghq" = "latest"
+"ubi:x-motemen/ghq" = "latest"
