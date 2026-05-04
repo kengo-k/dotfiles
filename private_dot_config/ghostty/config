@@ -15,6 +15,7 @@ theme = catppuccin-mocha
 window-padding-x = 16
 window-padding-y = 12
 # cmuxは独自のタブUIを持つので、Ghostty側のタブバーは無効化する
+# (現状 Linux/GTK 専用オプションのため macOS では無視される。Linux 利用に備えて残置)
 window-show-tab-bar = never
 
 # ===== スプリットペイン =====
