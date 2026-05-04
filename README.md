@@ -23,20 +23,13 @@ chezmoi update                 # git pull + chezmoi apply
 > 前提: mise が入っていること (`brew install mise` など、入れ方は問わない)
 
 ```sh
-# 1. mise 経由で chezmoi と ghq を入れる
-mise use -g chezmoi@latest ghq@latest
+# 1. mise 経由で chezmoi を入れる
+mise use -g chezmoi@latest
 
-# 2. このリポジトリを ghq 配下に取得
-ghq get -p git@github.com:kengo-k/dotfiles.git
+# 2. リポジトリを取得して反映 (~/.local/share/chezmoi に clone される)
+chezmoi init --apply kengo-k
 
-# 3. chezmoi のソースを ghq の場所に向ける
-mkdir -p ~/.config/chezmoi
-echo "sourceDir = \"$HOME/ghq/github.com/kengo-k/dotfiles\"" > ~/.config/chezmoi/chezmoi.toml
-
-# 4. ホームに反映
-chezmoi apply
-
-# 5. mise 管理の CLI ツール群を install
+# 3. mise 管理の CLI ツール群を install
 mise install
 ```
 
