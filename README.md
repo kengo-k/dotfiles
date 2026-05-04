@@ -36,4 +36,3 @@ mise install
 その後、必要に応じて手動セットアップ:
 
 - 必要に応じてフォントをインストール (例: `HackGen`)
-- ghostty / cmux / OrbStack / JetBrains Toolbox 等の各種アプリ
