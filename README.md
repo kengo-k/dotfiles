@@ -20,15 +20,21 @@ chezmoi update                 # git pull + chezmoi apply
 
 ### セットアップ（初回のみ）
 
-例（macOS の場合）
+まず Homebrew を入れる（公式手順）:
+
+- `https://brew.sh/`
+
+Homebrew インストール後、Brewfile で brew 管理のツールを揃える:
 
 ```sh
-# mise を使う場合
-brew install mise
-mise use -g chezmoi@latest
+brew bundle --file ./Brewfile
 ```
 
-別に mise でなくても良い（例: `brew install chezmoi` など）。
+`chezmoi` がまだ無ければ入れる（例）:
+
+```sh
+brew install chezmoi
+```
 
 ### 作業手順
 
@@ -41,7 +47,8 @@ chezmoi init kengo-k
 chezmoi diff                   # ソース(テンプレ)と ~/ 配下(生成物)の差分。生成物の直編集も、テンプレ更新で「次に入る変更」も確認できる
 chezmoi apply                  # ~/ 配下へ反映
 
-# 3. mise 管理の CLI ツール群を install
+# 3. mise 管理の CLI ツール群を install（mise が無ければ先に入れる）
+# brew install mise
 mise install
 ```
 
