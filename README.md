@@ -18,41 +18,54 @@ chezmoi update                 # git pull + chezmoi apply
 
 ## 新マシン初期構築
 
-### セットアップ（初回のみ）
+このリポジトリ自体（ghq 管理下の clone）を chezmoi のソースとして使う。
+chezmoi 既定の `~/.local/share/chezmoi` は使わず、`sourceDir` でこの clone を指す。
 
-まず Homebrew を入れる（公式手順）:
+### 1. Homebrew
 
-- `https://brew.sh/`
+公式手順で導入: `https://brew.sh/`
 
-Homebrew インストール後、Brewfile で brew 管理のツールを揃える:
+### 2. リポジトリを取得
 
 ```sh
-brew bundle --file ./Brewfile
+ghq get kengo-k/dotfiles
+# ghq が未導入なら git clone でも可:
+# git clone https://github.com/kengo-k/dotfiles.git ~/ghq/github.com/kengo-k/dotfiles
 ```
 
-`chezmoi` がまだ無ければ入れる（例）:
+### 3. chezmoi を導入し、この clone をソースに指定
 
 ```sh
 brew install chezmoi
+mkdir -p ~/.config/chezmoi
+printf 'sourceDir = "%s/ghq/github.com/kengo-k/dotfiles"\n' "$HOME" \
+  > ~/.config/chezmoi/chezmoi.toml
+chezmoi source-path            # この clone のパスが表示されれば OK
 ```
 
-### 作業手順
+### 4. 差分確認して反映
 
 ```sh
-# 1. リポジトリを取得
-# `chezmoi init <github-account>` を実行すると、`<github-account>/dotfiles.git` が `~/.local/share/chezmoi` に clone される
-chezmoi init kengo-k
-
-# 2. 差分確認して反映（初回は特に必ず確認）
-chezmoi diff                   # ソース(テンプレ)と ~/ 配下(生成物)の差分。生成物の直編集も、テンプレ更新で「次に入る変更」も確認できる
+chezmoi diff                   # ソースと ~/ 配下の差分（初回は特に必ず確認）
 chezmoi apply                  # ~/ 配下へ反映
+```
 
-# 3. mise 管理の CLI ツール群を install（mise が無ければ先に入れる）
-# brew install mise
+### 5. brew 管理ツールを揃える
+
+```sh
+brew bundle --file ~/ghq/github.com/kengo-k/dotfiles/Brewfile
+```
+
+### 6. mise 管理の CLI ツールを install
+
+mise が無ければ先に入れる（公式インストーラ）。その後:
+
+```sh
 mise install
 ```
 
 ### トラブルシューティング
 
 - **`mise install` 失敗**: `mise doctor` / `mise install -v` で原因を当たる（ネットワーク/権限/ビルド依存が多い）。
+- **GitHub API rate limit (403)**: `github:` バックエンドの install 時に出ることがある。`gh` 認証済みなら `GITHUB_TOKEN="$(gh auth token)" mise install` で回避できる。
 
