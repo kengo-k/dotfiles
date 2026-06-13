@@ -27,33 +27,32 @@ chezmoi 既定の `~/.local/share/chezmoi` は使わず、`sourceDir` でこの 
 
 ### 2. リポジトリを取得
 
+ghq はこの後 mise で入るため、初回は git clone で ghq レイアウトに直接置く:
+
 ```sh
-ghq get kengo-k/dotfiles
-# ghq が未導入なら git clone でも可:
-# git clone https://github.com/kengo-k/dotfiles.git ~/ghq/github.com/kengo-k/dotfiles
+git clone https://github.com/kengo-k/dotfiles.git ~/ghq/github.com/kengo-k/dotfiles
 ```
 
-### 3. chezmoi を導入し、この clone をソースに指定
+### 3. brew 管理ツールを揃える（chezmoi もここで入る）
 
 ```sh
-brew install chezmoi
+brew bundle --file ~/ghq/github.com/kengo-k/dotfiles/Brewfile
+```
+
+### 4. chezmoi にこの clone をソースとして指定
+
+```sh
 mkdir -p ~/.config/chezmoi
 printf 'sourceDir = "%s/ghq/github.com/kengo-k/dotfiles"\n' "$HOME" \
   > ~/.config/chezmoi/chezmoi.toml
 chezmoi source-path            # この clone のパスが表示されれば OK
 ```
 
-### 4. 差分確認して反映
+### 5. 差分確認して反映
 
 ```sh
 chezmoi diff                   # ソースと ~/ 配下の差分（初回は特に必ず確認）
 chezmoi apply                  # ~/ 配下へ反映
-```
-
-### 5. brew 管理ツールを揃える
-
-```sh
-brew bundle --file ~/ghq/github.com/kengo-k/dotfiles/Brewfile
 ```
 
 ### 6. mise 管理の CLI ツールを install
