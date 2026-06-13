@@ -30,10 +30,15 @@ if command -v ghq >/dev/null && command -v fzf >/dev/null; then
 fi
 
 # 履歴検索 fzf (Ctrl+H)
-# NOTE: `tail -r` は BSD/macOS 専用。Linux では `tac` への置換が必要。
+# `tail -r` は BSD/macOS 専用なので、Linux では `tac` を使う。
 if command -v fzf >/dev/null; then
+  if command -v tac >/dev/null; then
+    alias _reverse_lines='tac'
+  else
+    alias _reverse_lines='tail -r'
+  fi
   function fzf-history() {
-    local selected=$(fc -l 1 | tail -r | fzf +s --query="$LBUFFER" | sed 's/ *[0-9]* *//')
+    local selected=$(fc -l 1 | _reverse_lines | fzf +s --query="$LBUFFER" | sed 's/ *[0-9]* *//')
     if [ -n "$selected" ]; then
       BUFFER="$selected"
       CURSOR=$#BUFFER
