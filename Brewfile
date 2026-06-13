@@ -1,5 +1,4 @@
 # Explicitly installed formulae (brew leaves)
 brew "chezmoi"
 brew "git"
-brew "libpq", link: true
 brew "mise"
