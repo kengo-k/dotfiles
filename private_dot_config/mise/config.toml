@@ -2,13 +2,12 @@
 # Run `chezmoi edit ~/.config/mise/config.toml` to modify the source.
 
 [tools]
-chezmoi = "latest"
-fd = "latest"
-fzf = "latest"
-gh = "latest"
-ghq = "latest"
-jq = "latest"
-lazygit = "latest"
-ripgrep = "latest"
-starship = "latest"
-zoxide = "latest"
+awscli = { version = "2.34.19", symlink_bins = "true" }
+"github:BurntSushi/ripgrep" = "15.1.0"
+"github:ajeetdsouza/zoxide" = "0.9.9"
+"github:cli/cli" = "2.89.0"
+"github:jqlang/jq" = "jq-1.8.1"
+"github:junegunn/fzf" = "0.70.0"
+"github:sharkdp/fd" = "10.4.2"
+"github:starship/starship" = "1.24.2"
+"github:x-motemen/ghq" = "1.9.4"
