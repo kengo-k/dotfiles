@@ -64,8 +64,21 @@ mise 本体はステップ3の `brew bundle` で導入済み。各ツールを�
 mise install
 ```
 
+> **新マシンでは `GITHUB_TOKEN` がほぼ必須。**
+> ツールの多くは `github:` バックエンドで、バージョン固定でも初回は GitHub API
+> を叩く。未認証は 60 回/時で、ツール数分の問い合わせですぐ 403 になる。
+> スコープ不要の PAT を `https://github.com/settings/tokens` で作り、渡して実行する:
+>
+> ```sh
+> export GITHUB_TOKEN=ghp_xxxxxxxxxxxx
+> mise install
+> ```
+>
+> `gh` 認証済みのマシンなら `GITHUB_TOKEN="$(gh auth token)" mise install` でもよいが、
+> 初回ブートストラップ時点では `gh` 自体が未導入（mise で入れる対象）なので使えない。
+
 ### トラブルシューティング
 
 - **`mise install` 失敗**: `mise doctor` / `mise install -v` で原因を当たる（ネットワーク/権限/ビルド依存が多い）。
-- **GitHub API rate limit (403)**: `github:` バックエンドの install 時に出ることがある。`gh` 認証済みなら `GITHUB_TOKEN="$(gh auth token)" mise install` で回避できる。
+- **GitHub API rate limit (403)**: 上記ステップ6の `GITHUB_TOKEN` を設定する。
 
