@@ -6,3 +6,5 @@
 [user]
 	name = kengo-k
 	email = 31839234+kengo-k@users.noreply.github.com
+[core]
+	excludesfile = ~/.gitignore_global
