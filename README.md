@@ -57,7 +57,7 @@ chezmoi apply                  # ~/ 配下へ反映
 
 ### 6. mise 管理の CLI ツールを install
 
-mise が無ければ先に入れる（公式インストーラ）。その後:
+mise 本体はステップ3の `brew bundle` で導入済み。各ツールを入れる:
 
 ```sh
 mise install

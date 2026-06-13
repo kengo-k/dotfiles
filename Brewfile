@@ -2,3 +2,4 @@
 brew "chezmoi"
 brew "git"
 brew "libpq", link: true
+brew "mise"
