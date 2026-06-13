@@ -57,7 +57,8 @@ chezmoi apply                  # ~/ 配下へ反映
 
 ### 6. mise 管理の CLI ツールを install
 
-mise 本体はステップ3の `brew bundle` で導入済み。各ツールを入れる:
+mise 本体はステップ3の `brew bundle` で導入済み。各ツールを入れる
+（グローバル設定 `~/.config/mise/config.toml` を常に読むので、実行場所は任意）:
 
 ```sh
 mise install
