@@ -22,10 +22,10 @@ style = "blue"
 [username]
 disabled = true
 
-# SSH のときだけ、ホスト名は出さずシンボル1つで「リモートにいる」ことを示す
+# SSH のときだけ「🌐 <ホスト名>」を表示してリモート先を示す
 [hostname]
 ssh_only = true
-format = "[$ssh_symbol]($style)"
+format = "[$ssh_symbol$hostname]($style) "
 ssh_symbol = "🌐 "
 style = "bold yellow"
 
