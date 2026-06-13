@@ -67,13 +67,15 @@ mise install
 > **新マシンでは `GITHUB_TOKEN` がほぼ必須。**
 > ツールの多くは `github:` バックエンドで、バージョン固定でも初回は GitHub API
 > を叩く。未認証は 60 回/時で、ツール数分の問い合わせですぐ 403 になる。
-> スコープ不要の PAT を `https://github.com/settings/tokens` で作り、渡して実行する:
+> スコープ不要の PAT を `https://github.com/settings/tokens` で作り、渡して実行する。
+> `read -s` で入力すれば、トークンが画面にもシェル履歴にも残らない:
 >
 > ```sh
-> export GITHUB_TOKEN=ghp_xxxxxxxxxxxx
+> read -rs GITHUB_TOKEN && export GITHUB_TOKEN   # プロンプトにトークンを貼り付け（非表示）
 > mise install
 > ```
 >
+> 使い終わったら `unset GITHUB_TOKEN`、またはそのシェルを閉じれば残らない。
 > `gh` 認証済みのマシンなら `GITHUB_TOKEN="$(gh auth token)" mise install` でもよいが、
 > 初回ブートストラップ時点では `gh` 自体が未導入（mise で入れる対象）なので使えない。
 
