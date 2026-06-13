@@ -18,6 +18,17 @@ $character"""
 [directory]
 style = "blue"
 
+# username は常に隠す（ローカル/SSH ともにノイズなので非表示）
+[username]
+disabled = true
+
+# SSH のときだけ、ホスト名は出さずシンボル1つで「リモートにいる」ことを示す
+[hostname]
+ssh_only = true
+format = "[$ssh_symbol]($style)"
+ssh_symbol = "🔒 "
+style = "bold yellow"
+
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
