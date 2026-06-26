@@ -2,7 +2,7 @@
 # Run `chezmoi edit ~/.zshrc` to modify the source.
 
 # mise
-for misepath in "$HOME/.local/bin/mise" /opt/homebrew/bin/mise /usr/local/bin/mise; do
+for misepath in "$HOME/.local/bin/mise" /opt/homebrew/bin/mise /usr/local/bin/mise /home/linuxbrew/.linuxbrew/bin/mise "$HOME/.linuxbrew/bin/mise"; do
   if [ -x "$misepath" ]; then
     eval "$("$misepath" activate zsh)"
     break

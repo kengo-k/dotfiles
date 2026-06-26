@@ -21,6 +21,11 @@ chezmoi update                 # git pull + chezmoi apply
 このリポジトリ自体（ghq 管理下の clone）を chezmoi のソースとして使う。
 chezmoi 既定の `~/.local/share/chezmoi` は使わず、`sourceDir` でこの clone を指す。
 
+> **Linux で使う場合は zsh を別途インストールすること。**
+> このリポジトリの設定は zsh 前提だが、macOS と違い Linux には zsh が同梱されない。
+> ディストリ標準のインストール方法で入れる（例: Debian/Ubuntu は `sudo apt install zsh`）。
+> 導入後、`chsh -s /usr/bin/zsh` でログインシェルを zsh に切り替える。
+
 ### 1. Homebrew
 
 公式手順で導入: `https://brew.sh/`

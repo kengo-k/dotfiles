@@ -23,4 +23,12 @@ done
 
 # ===== Linux =====
 
+# Homebrew (Linuxbrew: 共有 /home/linuxbrew か個人 ~/.linuxbrew)
+for brewbin in /home/linuxbrew/.linuxbrew/bin/brew "$HOME/.linuxbrew/bin/brew"; do
+  if [ -x "$brewbin" ]; then
+    eval "$("$brewbin" shellenv)"
+    break
+  fi
+done
+
 {{- end }}
