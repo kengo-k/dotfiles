@@ -2,7 +2,7 @@
 # Run `chezmoi edit ~/.zshrc` to modify the source.
 
 # mise
-for misepath in "$HOME/.local/bin/mise" /opt/homebrew/bin/mise /usr/local/bin/mise; do
+for misepath in "$HOME/.local/bin/mise" /opt/homebrew/bin/mise /usr/local/bin/mise /home/linuxbrew/.linuxbrew/bin/mise "$HOME/.linuxbrew/bin/mise"; do
   if [ -x "$misepath" ]; then
     eval "$("$misepath" activate zsh)"
     break
@@ -15,9 +15,13 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 # starship
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
-# ls
-export CLICOLOR=1
-alias ls='ls -G'
+# ls 色付け（GNU coreutils と BSD/macOS で指定方法が違うので判定して分岐）
+if ls --color=auto >/dev/null 2>&1; then
+  alias ls='ls --color=auto'   # GNU (Linux)
+else
+  export CLICOLOR=1             # BSD (macOS)
+  alias ls='ls -G'
+fi
 alias ll='ls -lh'
 alias la='ls -lha'
 
