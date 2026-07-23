@@ -3,6 +3,7 @@
 
 [tools]
 awscli = { version = "2.34.19", symlink_bins = "true" }
+terraform = "1.15.8"
 "github:BurntSushi/ripgrep" = "15.1.0"
 "github:ajeetdsouza/zoxide" = "0.9.9"
 "github:cli/cli" = "2.89.0"
