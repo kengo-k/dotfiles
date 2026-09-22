@@ -33,6 +33,15 @@ keybind = super+alt+right=goto_split:right
 keybind = super+alt+up=goto_split:top
 keybind = super+alt+down=goto_split:bottom
 
+# ===== クリップボード =====
+# Ghostty 1.3 以降の既定は mixed (plain + HTML)。
+# ChatGPT などの Web UI は HTML を優先し、各行の後に空行が入る。
+# Cmd+C とメニューの Copy はプレーンテキストのみにする。
+# 注意: 選択しただけでコピーする copy-on-select は 1.3.1 では
+# mixed 固定。選択後に必ず Cmd+C してから貼ること。
+keybind = super+c=copy_to_clipboard:plain
+keybind = copy=copy_to_clipboard:plain
+
 # ===== その他 =====
 # macos-option-as-alt は macOS 専用設定 (他OSでは無視される)
 macos-option-as-alt = true
